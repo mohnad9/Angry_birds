@@ -11,6 +11,7 @@ public class smile : MonoBehaviour
     {
         if(collision.relativeVelocity.magnitude > hit)
         {
+            FindObjectOfType<manger>().removeSmile();
             Instantiate(effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

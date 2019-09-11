@@ -7,6 +7,7 @@ public class angry : MonoBehaviour
     bool isClicked = false;
     public Rigidbody2D rg;
     public SpringJoint2D sj;
+    public GameObject Star;
 
     void Update()
     {
@@ -26,14 +27,20 @@ public class angry : MonoBehaviour
         rg.isKinematic = false;
 
         StartCoroutine(wait());
-    
+        StartCoroutine(waitAngry());
     }
     IEnumerator wait()
     {
         yield return new WaitForSecondsRealtime(0.15f);
         sj.enabled = false;
     }
-    
- 
+    IEnumerator waitAngry()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        transform.position = Star.transform.position;
+        sj.enabled = true;
+    }
+
+
 
 }
